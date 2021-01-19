@@ -120,8 +120,6 @@ def update_emoji(payload):
 
         slack_web_client.chat_postMessage(token=os.environ['ACCESS_TOKEN'],channel=channel_id,text=text,thread_ts=ts,username="TWEET_SUBMIT")
 
-        url = Image.open('sample.png')
-
         call(urls)
 
         print(text)
