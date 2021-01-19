@@ -1,2 +1,9 @@
 flask
 gunicorn
+slack_sdk
+slackeventsapi
+twitter
+python-dotenv
+slackeventsapi
+Image
+requests_oauthlib
