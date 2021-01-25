@@ -80,6 +80,10 @@ def update_emoji(payload):
         if len(files) > 0 :
             file_check = True
         
+        print("\n\n\n\n\n\n")
+        print(files)
+        print("\n\n\n\n\n\n\n")
+
         for photo in files:
             photo_id = photo.get('id')
             print(photo_id)
@@ -149,13 +153,14 @@ def call(img_url):
 
     url_text = "https://api.twitter.com/1.1/statuses/update.json"
 
-#    img_url = ['https://files.slack.com/files-pri/T01G53S0SSD-F01JS3CRH6D/mojomoji.png?pub_secret=7fb12ecb60',
+    #img_url = ['https://1.bp.blogspot.com/-SWOiphrHWnI/XWS5x7MYwHI/AAAAAAABUXA/i_PRL_Atr08ayl9sZy9-x0uoY4zV2d5xwCLcBGAs/s1600/pose_dance_ukareru_man.png',
 
-#           'https://1.bp.blogspot.com/-CSIokkL0VJc/XVKgHNKp2QI/AAAAAAABUHU/znkuxlOlQ5giZ3gDbks7KAK3TJnT2q1XwCLcBGAs/s1600/kotowaza_hato_mamedeppou.png',
+    #        'https://1.bp.blogspot.com/-CSIokkL0VJc/XVKgHNKp2QI/AAAAAAABUHU/znkuxlOlQ5giZ3gDbks7KAK3TJnT2q1XwCLcBGAs/s1600/kotowaza_hato_mamedeppou.png',
 
-#            'https://1.bp.blogspot.com/-8sMAiPmvFuo/XVjgKN2BXoI/AAAAAAABUM0/IfTQp8hHWRsVk_u7s84OE6yvFJ5ekpnLwCLcBGAs/s1600/kid_seikaku_uchiki_girl.png',
+    #        'https://1.bp.blogspot.com/-8sMAiPmvFuo/XVjgKN2BXoI/AAAAAAABUM0/IfTQp8hHWRsVk_u7s84OE6yvFJ5ekpnLwCLcBGAs/s1600/kid_seikaku_uchiki_girl.png',
 
-#           'https://1.bp.blogspot.com/-ahlT7Kd7-T0/XVjgJ3hrbFI/AAAAAAABUMw/MV4su85SnoAMYnSitR9DXVgNFuorpprwQCLcBGAs/s1600/kid_seikaku_uchiki_boy.png']  #①
+    #        'https://1.bp.blogspot.com/-ahlT7Kd7-T0/XVjgJ3hrbFI/AAAAAAABUMw/MV4su85SnoAMYnSitR9DXVgNFuorpprwQCLcBGAs/s1600/kid_seikaku_uchiki_boy.png']  #①
+ #①
 
     media_id = []
 
@@ -172,6 +177,13 @@ def call(img_url):
         files = {"media" : data}
 
         req_media = twitter.post(url_media,files = files)  #③
+
+
+        print("\n\n\n\n\n\n\n")
+        print(json.loads(req_media.text))
+        print("\n\n\n\n\n\n\n")
+	
+
 
         media_id.append(json.loads(req_media.text)['media_id_string'])
 
