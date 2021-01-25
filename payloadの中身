@@ -1,0 +1,224 @@
+{
+    'token': 'xj7WLU83bFD5V8WZOI4WwCJz',
+    'team_id': 'T01G53S0SSD',
+    'api_app_id': 'A01H6LC9QPR',
+    'event': {
+        'type': 'reaction_added',
+        'user': 'U01FYP616QL',
+        'item': {
+            'type': 'message',
+            'channel': 'C01JB9810U8',
+            'ts': '1609138654.005000'
+        },
+        'reaction': 'white_check_mark',
+        'item_user': 'U01HEL96SHL',
+        'event_ts': '1609138656.005100'
+    }, 
+    'type': 'event_callback',
+    'event_id': 'Ev01HG6YHBNJ',
+    'event_time': 1609138656,
+    'authorizations': [{
+        'enterprise_id': None,
+        'team_id': 'T01G53S0SSD',
+        'user_id': 'U01HEL96SHL',
+        'is_bot': True,
+        'is_enterprise_install': False
+    }],
+    'is_ext_shared_channel': False,
+    'event_context': '1-reaction_added-T01G53S0SSD-C01JB9810U8'
+}
+
+#2つの画像を投稿した時のやつ
+{
+    'ok': True,
+    'type': 'message',
+    'channel': 'C01J390S891',
+    'message': {
+        'type': 'message',
+        'text': '今日は成人式です',
+        'files': [
+            {
+                'id': 'F01JS3CRH6D',
+                'created': 1610344900,
+                'timestamp': 1610344900,
+                'name': 'mojomoji.png',
+                'title': 'mojomoji.png',
+                'mimetype': 'image/png',
+                'filetype': 'png',
+                'pretty_type': 'PNG',
+                'user': 'U01FYP616QL',
+                'editable': False,
+                'size': 232458,
+                'mode': 'hosted',
+                'is_external': False,
+                'external_type': '',
+                'is_public': True,
+                'public_url_shared': False,
+                'display_as_bot': False,
+                'username': '',
+                'url_private': 'https://files.slack.com/files-pri/T01G53S0SSD-F01JS3CRH6D/mojomoji.png',
+                'url_private_download': 'https://files.slack.com/files-pri/T01G53S0SSD-F01JS3CRH6D/download/mojomoji.png',
+                'thumb_64': 'https://files.slack.com/files-tmb/T01G53S0SSD-F01JS3CRH6D-fce84b0411/mojomoji_64.png',
+                'thumb_80': 'https://files.slack.com/files-tmb/T01G53S0SSD-F01JS3CRH6D-fce84b0411/mojomoji_80.png',
+                'thumb_360': 'https://files.slack.com/files-tmb/T01G53S0SSD-F01JS3CRH6D-fce84b0411/mojomoji_360.png',
+                'thumb_360_w': 267,
+                'thumb_360_h': 360,
+                'thumb_480': 'https://files.slack.com/files-tmb/T01G53S0SSD-F01JS3CRH6D-fce84b0411/mojomoji_480.png',
+                'thumb_480_w': 356,
+                'thumb_480_h': 480,
+                'thumb_160': 'https://files.slack.com/files-tmb/T01G53S0SSD-F01JS3CRH6D-fce84b0411/mojomoji_160.png',
+                'thumb_720': 'https://files.slack.com/files-tmb/T01G53S0SSD-F01JS3CRH6D-fce84b0411/mojomoji_720.png',
+                'thumb_720_w': 533,
+                'thumb_720_h': 720,
+                'thumb_800': 'https://files.slack.com/files-tmb/T01G53S0SSD-F01JS3CRH6D-fce84b0411/mojomoji_800.png',
+                'thumb_800_w': 593, 
+                'thumb_800_h': 800,
+                'original_w': 646,
+                'original_h': 872,
+                'thumb_tiny':
+                'AwAwACPMpwHFNrWhjiaGNV+dQc5IpN2GlcyyKbWtNDAsZLphRyCO1ZJxnjpQncGrBRRRTEFaFgsixls/Kei1n1o2Mu6PYOCvBpS2AfdxvJERkjHOB0NZda1xL5cW4jOOAKyaURXuFFFFUMKmtiQzYOOKhp8LBWJPpSYImuGJj5JPNVqmeQNHjvUNCGwooopiP//Z',
+                'permalink': 'https://aokomtestworkspace.slack.com/files/U01FYP616QL/F01JS3CRH6D/mojomoji.png',
+                'permalink_public': 'https://slack-files.com/T01G53S0SSD-F01JS3CRH6D-7fb12ecb60', 
+                'is_starred': False,
+                'has_rich_preview': False
+            }, {
+                'id': 'F01JABPC6FP',
+                'created': 1610344903,
+                'timestamp': 1610344903,
+                'name': 'mojomoji2.png',
+                'title': 'mojomoji2.png',
+                'mimetype': 'image/png',
+                'filetype': 'png',
+                'pretty_type': 'PNG',
+                'user': 'U01FYP616QL',
+                'editable': False,
+                'size': 241131,
+                'mode': 'hosted',
+                'is_external': False,
+                'external_type': '',
+                'is_public': True,
+                'public_url_shared': False,
+                'display_as_bot': False,
+                'username': '',
+                'url_private': 'https://files.slack.com/files-pri/T01G53S0SSD-F01JABPC6FP/mojomoji2.png',
+                'url_private_download': 'https://files.slack.com/files-pri/T01G53S0SSD-F01JABPC6FP/download/mojomoji2.png',
+                'thumb_64': 'https://files.slack.com/files-tmb/T01G53S0SSD-F01JABPC6FP-b2f6431098/mojomoji2_64.png',
+                'thumb_80': 'https://files.slack.com/files-tmb/T01G53S0SSD-F01JABPC6FP-b2f6431098/mojomoji2_80.png',
+                'thumb_360': 'https://files.slack.com/files-tmb/T01G53S0SSD-F01JABPC6FP-b2f6431098/mojomoji2_360.png',
+                'thumb_360_w': 267,
+                'thumb_360_h': 360,
+                'thumb_480': 'https://files.slack.com/files-tmb/T01G53S0SSD-F01JABPC6FP-b2f6431098/mojomoji2_480.png',
+                'thumb_480_w': 356,
+                'thumb_480_h': 480,
+                'thumb_160': 'https://files.slack.com/files-tmb/T01G53S0SSD-F01JABPC6FP-b2f6431098/mojomoji2_160.png',
+                'thumb_720': 'https://files.slack.com/files-tmb/T01G53S0SSD-F01JABPC6FP-b2f6431098/mojomoji2_720.png', 
+                'thumb_720_w': 533,
+                'thumb_720_h': 720,
+                'thumb_800': 'https://files.slack.com/files-tmb/T01G53S0SSD-F01JABPC6FP-b2f6431098/mojomoji2_800.png',
+                'thumb_800_w': 593,
+                'thumb_800_h': 800,
+                'original_w': 646,
+                'original_h': 872,
+                'thumb_tiny': 'AwAwACPMpwXjmm1rxJE0MYQB1Bzk0m7DSuZZUdqZWtNBCNzumAOcqayT146UJ3BqwUUUUxBV/Tw6qTklSfu1Qq/ZS5j2Dgjr9KT2HHclvVZ4ztJAXkD1rLrTuJdkWTz2FZlCHIKKKKZIVLb/AHz9Kip8TBGyfSgEST/6sfWoKkeQMmD1zUdA2FFFFAj/2Q==',
+                'permalink': 'https://aokomtestworkspace.slack.com/files/U01FYP616QL/F01JABPC6FP/mojomoji2.png',
+                'permalink_public': 'https://slack-files.com/T01G53S0SSD-F01JABPC6FP-6a155c61e5',
+                'is_starred': False,
+                'has_rich_preview': False
+            }
+        ],
+        'upload': False,
+        'blocks': [
+            {
+                'type': 'rich_text',
+                'block_id': 'Veh',
+                'elements': [
+                    {
+                        'type': 'rich_text_section',
+                        'elements': [
+                            {
+                                'type': 'text',
+                                'text': '今日は成人式です'
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        'user': 'U01FYP616QL',
+        'ts': '1610344913.002600',
+        'thread_ts': '1610344913.002600',
+        'reply_count': 3,
+        'reply_users_count': 1,
+        'latest_reply': '1610345133.004200',
+        'reply_users': ['U01FYP616QL'],
+        'subscribed': False,
+        'reactions': [
+            {
+                'name': 'white_check_mark',
+                'users': ['U01FYP616QL'],
+                'count': 1
+            }
+        ],
+        'permalink': 'https://aokomtestworkspace.slack.com/archives/C01J390S891/p1610344913002600?thread_ts=1610344913002600'
+    }
+}
+
+[
+    {
+        'id': 'F01KHN24751',
+        'created': 1611284584,
+        'timestamp': 1611284584,
+        'name': 'v070256b0000bobdocvhplilobjpasd0.mp4',
+        'title': 'v070256b0000bobdocvhplilobjpasd0.mp4',
+        'mimetype': 'video/mp4',
+        'filetype': 'mp4',
+        'pretty_type': 'MPEG 4 Video',
+        'user': 'U01FYP616QL',
+        'editable': False,
+        'size': 1843241,
+        'mode': 'hosted',
+        'is_external': False,
+        'external_type': '',
+        'is_public': True,
+        'public_url_shared': False,
+        'display_as_bot': False,
+        'username': '',
+        'url_private': 'https://files.slack.com/files-pri/T01G53S0SSD-F01KHN24751/v070256b0000bobdocvhplilobjpasd0.mp4',
+        'url_private_download': 'https://files.slack.com/files-pri/T01G53S0SSD-F01KHN24751/download/v070256b0000bobdocvhplilobjpasd0.mp4',
+        'thumb_video': 'https://files.slack.com/files-tmb/T01G53S0SSD-F01KHN24751-8d7aee5fdf/v070256b0000bobdocvhplilobjpasd0_thumb_video.jpeg',
+        'permalink': 'https://aokomtestworkspace.slack.com/files/U01FYP616QL/F01KHN24751/v070256b0000bobdocvhplilobjpasd0.mp4',
+        'permalink_public': 'https://slack-files.com/T01G53S0SSD-F01KHN24751-f8bf3077d8',
+        'is_starred': False, 
+        'has_rich_preview': False
+    }
+]
+
+[
+    {
+        'id': 'F01KHN24751',
+        'created': 1611284584,
+        'timestamp': 1611284584, 
+        'name': 'v070256b0000bobdocvhplilobjpasd0.mp4', 
+        'title': 'v070256b0000bobdocvhplilobjpasd0.mp4', 
+        'mimetype': 'video/mp4', 
+        'filetype': 'mp4', 
+        'pretty_type': 'MPEG 4 Video', 
+        'user': 'U01FYP616QL', 
+        'editable': False, 
+        'size': 1843241, 
+        'mode': 'hosted', 
+        'is_external': False, 
+        'external_type': '', 
+        'is_public': True, 
+        'public_url_shared': False, 
+        'display_as_bot': False, 
+        'username': '', 
+        'url_private': 'https://files.slack.com/files-pri/T01G53S0SSD-F01KHN24751/v070256b0000bobdocvhplilobjpasd0.mp4',
+        'url_private_download': 'https://files.slack.com/files-pri/T01G53S0SSD-F01KHN24751/download/v070256b0000bobdocvhplilobjpasd0.mp4',
+        'thumb_video': 'https://files.slack.com/files-tmb/T01G53S0SSD-F01KHN24751-8d7aee5fdf/v070256b0000bobdocvhplilobjpasd0_thumb_video.jpeg',
+        'permalink': 'https://aokomtestworkspace.slack.com/files/U01FYP616QL/F01KHN24751/v070256b0000bobdocvhplilobjpasd0.mp4',
+        'permalink_public': 'https://slack-files.com/T01G53S0SSD-F01KHN24751-f8bf3077d8',
+        'is_starred': False,
+        'has_rich_preview': False
+    }
+]

@@ -9,6 +9,7 @@ from requests_oauthlib import OAuth1Session
 import urllib.request
 import config
 import json
+import requests
 from twitter import Twitter, OAuth
 
 # Initialize a Flask app to host the events adapter
@@ -115,7 +116,7 @@ def update_emoji(payload):
 
         i = 0
         for url in urls:
-            dst_path = 'py-logo'+ str(i) + '.png'
+            dst_path = 'py-logo'+ str(i) + '.mp4'
             download_file(url, dst_path)
             i = i + 1 
 
@@ -214,4 +215,3 @@ if __name__ == "__main__":
     logger.setLevel(logging.DEBUG)
     logger.addHandler(logging.StreamHandler())
     app.run(port=3000)
-
