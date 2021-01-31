@@ -25,7 +25,6 @@ onboarding_tutorials_sent = {}
 
 ts_list = []
 
-
 def start_onboarding(user_id: str, channel: str):
     # Create a new onboarding tutorial.
     onboarding_tutorial = OnboardingTutorial(channel)
