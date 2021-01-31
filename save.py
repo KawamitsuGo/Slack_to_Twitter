@@ -1,6 +1,22 @@
 import requests
 import urllib
 import json
+import os
+from flask import Flask
+from slack_sdk.web import WebClient
+from slackeventsapi import SlackEventAdapter
+
+
+
+app = Flask(__name__)
+slack_events_adapter = SlackEventAdapter(os.environ["SLACK_SIGNING_SECRET"], "/slack/events", app)
+photo_id = 'F01KHN24751'
+
+slack_web_client = WebClient(token=os.environ['SLACK_BOT_TOKEN'])
+
+slack_web_client.files_sharedPublicURL(token=os.environ['ACCESS_TOKEN'],file = photo_id)
+
+
 
 def download_file(url, dst_path):
     try:
@@ -11,11 +27,10 @@ def download_file(url, dst_path):
     except urllib.error.URLError as e:
         print(e)
 
-response = requests.get('https://files.slack.com/files-pri/T01G53S0SSD-F01KHN24751/v070256b0000bobdocvhplilobjpasd0.mp4?pub_secret=f8bf3077d8')
+response = requests.get('https://slack-files.com/T01G53S0SSD-F01KHN24751-f8bf3077d8')
 
-response.dumps()
 
 with open('sample.mp4', 'wb') as saveFile:
     saveFile.write(response.content)
 
-download_file('https://files.slack.com/files-pri/T01G53S0SSD-F01KHN24751/v070256b0000bobdocvhplilobjpasd0.mp4?pub_secret=f8bf3077d8', 'sample2.mp4')
+download_file('https://slack-files.com/T01G53S0SSD-F01KHN24751-f8bf3077d8', 'sample2.mp4')

@@ -123,8 +123,6 @@ def update_emoji(payload):
         reply = text
         print(reply)
 
-        slack_web_client.chat_postMessage(token=os.environ['ACCESS_TOKEN'],channel=channel_id,text=text,thread_ts=ts,username="TWEET_SUBMIT")
-
         call(urls)
 
         print(text)
@@ -153,15 +151,6 @@ def call(img_url):
     url_media = "https://upload.twitter.com/1.1/media/upload.json"
 
     url_text = "https://api.twitter.com/1.1/statuses/update.json"
-
-    #img_url = ['https://1.bp.blogspot.com/-SWOiphrHWnI/XWS5x7MYwHI/AAAAAAABUXA/i_PRL_Atr08ayl9sZy9-x0uoY4zV2d5xwCLcBGAs/s1600/pose_dance_ukareru_man.png',
-
-    #        'https://1.bp.blogspot.com/-CSIokkL0VJc/XVKgHNKp2QI/AAAAAAABUHU/znkuxlOlQ5giZ3gDbks7KAK3TJnT2q1XwCLcBGAs/s1600/kotowaza_hato_mamedeppou.png',
-
-    #        'https://1.bp.blogspot.com/-8sMAiPmvFuo/XVjgKN2BXoI/AAAAAAABUM0/IfTQp8hHWRsVk_u7s84OE6yvFJ5ekpnLwCLcBGAs/s1600/kid_seikaku_uchiki_girl.png',
-
-    #        'https://1.bp.blogspot.com/-ahlT7Kd7-T0/XVjgJ3hrbFI/AAAAAAABUMw/MV4su85SnoAMYnSitR9DXVgNFuorpprwQCLcBGAs/s1600/kid_seikaku_uchiki_boy.png']  #①
- #①
 
     media_id = []
 
