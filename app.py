@@ -25,31 +25,6 @@ onboarding_tutorials_sent = {}
 
 ts_list = []
 
-def start_onboarding(user_id: str, channel: str):
-    # Create a new onboarding tutorial.
-    onboarding_tutorial = OnboardingTutorial(channel)
-
-    # Get the onboarding message payload
-    message = onboarding_tutorial.get_message_payload()
-
-    # Post the onboarding message in Slack
-    response = slack_web_client.chat_postMessage(**message)
-
-    # Capture the timestamp of the message we've just posted so
-    # we can use it to update the message after a user
-    # has completed an onboarding task.
-    onboarding_tutorial.timestamp = response["ts"]
-
-    # Store the message sent in onboarding_tutorials_sent
-    if channel not in onboarding_tutorials_sent:
-        onboarding_tutorials_sent[channel] = {}
-    onboarding_tutorials_sent[channel][user_id] = onboarding_tutorial
-
-
-# ============= Reaction Added Events ============= #
-# When a users adds an emoji reaction to the onboarding message,
-# the type of the event will be 'reaction_added'.
-# Here we'll link the update_emoji callback to the 'reaction_added' event.
 @slack_events_adapter.on("reaction_added")
 def update_emoji(payload):
     """Update the onboarding welcome message after receiving a "reaction_added"
@@ -69,81 +44,82 @@ def update_emoji(payload):
 
     print(user_name)
 
-    if "青木允輝"in user_name and "AoKoM" in user_name and reaction == 'white_check_mark' and ts not in ts_list :
+    if "青木允輝"in user_name and reaction == 'white_check_mark' and ts not in ts_list :
         response = slack_web_client.reactions_get(**{'channel':channel_id , 'timestamp': ts})
         message = response.get("message")
         text = message.get("text")
         files = message.get("files")
-        file_check = False
+        if files != None:
+            file_check = True
+        else:
+            file_check = False
         urls = []
 
-        if len(files) > 0 :
-            file_check = True
+        print("\n\n\n\n\n\n\n\n")
+        print(file_check)
+        print("\n\n\n\n\n\n\n\n")
+
+        if file_check == True:
+            for photo in files:
+                photo_id = photo.get('id')
+                print(photo_id)
+                try:
+                    slack_web_client.files_sharedPublicURL(token=os.environ['ACCESS_TOKEN'],file = photo_id)
+                except:
+                    pass
+                url_private = photo.get('url_private')
+                url = photo.get('permalink_public')
+                permanents = url.split('-')
+                permanent = permanents[-1]
+                url = url_private + '?pub_secret=' + permanent
+                urls.append(url)
+
+            i = 0
+            for url in urls:
+                dst_path = 'py-logo'+ str(i) + '.png'
+                download_file(url, dst_path)
+                i = i + 1 
         
-        print("\n\n\n\n\n\n")
-        print(files)
-        print("\n\n\n\n\n\n\n")
-
-        for photo in files:
-            photo_id = photo.get('id')
-            print(photo_id)
-            try:
-                slack_web_client.files_sharedPublicURL(token=os.environ['ACCESS_TOKEN'],file = photo_id)
-            except:
-                pass
-            url_private = photo.get('url_private')
-            url = photo.get('permalink_public')
-            permanents = url.split('-')
-            permanent = permanents[-1]
-            url = url_private + '?pub_secret=' + permanent
-            urls.append(url)
-
-        print(urls)
 
         ts_list.append(ts)
-
-        t = Twitter(
-            auth=OAuth(
-                config.TW_TOKEN,
-                config.TW_TOKEN_SECRET,
-                config.TW_CONSUMER_KEY,
-                config.TW_CONSUMER_SECRET,
-            )
-        )
-
-        print(urls)
-
-        i = 0
-        for url in urls:
-            dst_path = 'py-logo'+ str(i) + '.mp4'
-            download_file(url, dst_path)
-            i = i + 1 
-
-        reply = text
-        print(reply)
-
-        call(urls)
-
-        print(text)
-        print(type(url))
-
-@slack_events_adapter.on("message")
-def message(payload):
-    """Display the onboarding welcome message after receiving a message
-    that contains "start".
-    """
-    print(payload)    
+        
 
 
-def call(img_url):    
+        try:
+            if file_check == True: 
+                tweet_img(urls,text)
+            else:
+                tweet(text)
+            text='正常にツイートしました'
+            slack_web_client.chat_postMessage(token=os.environ['ACCESS_TOKEN'],channel=channel_id,text=text,thread_ts=ts,username="TWEET_SUBMIT")
+        except:
+            text='ツイートに失敗しました'
+            slack_web_client.chat_postMessage(token=os.environ['ACCESS_TOKEN'],channel=channel_id,text=text,thread_ts=ts,username="TWEET_SUBMIT")
 
-    CK=config.TW_CONSUMER_KEY
 
-    CS=config.TW_CONSUMER_SECRET
+def tweet(text):    
 
-    AT=config.TW_TOKEN
+    CK=os.environ['TW_CONSUMER_KEY']
+    CS=os.environ['TW_CONSUMER_SECRET']
+    AT=os.environ['TW_TOKEN']
+    AS=os.environ['TW_TOKEN_SECRET']
 
-    AS=config.TW_TOKEN_SECRET
+    twitter = OAuth1Session(CK,CS,AT,AS)
+
+    url_text = "https://api.twitter.com/1.1/statuses/update.json"
+
+    status = text
+
+    params = {"status": status}
+
+    twitter.post(url_text,params=params)
+
+def tweet_img(img_url,text):    
+
+    CK=os.environ['TW_CONSUMER_KEY']
+    CS=os.environ['TW_CONSUMER_SECRET']
+    AT=os.environ['TW_TOKEN']
+    AS=os.environ['TW_TOKEN_SECRET']
 
     twitter = OAuth1Session(CK,CS,AT,AS)
 
@@ -155,7 +131,7 @@ def call(img_url):
 
     for i in range(len(img_url)):
 
-        headers = {"User-Agent": "Mozilla/5.0"}  #②
+        headers = {"User-Agent": "Mozilla/5.0"}
 
         request = urllib.request.Request(url=img_url[i],headers=headers)
 
@@ -165,26 +141,15 @@ def call(img_url):
 
         files = {"media" : data}
 
-        req_media = twitter.post(url_media,files = files)  #③
-
-
-        print("\n\n\n\n\n\n\n")
-        print(json.loads(req_media.text))
-        print("\n\n\n\n\n\n\n")
-	
-
+        req_media = twitter.post(url_media,files = files)
 
         media_id.append(json.loads(req_media.text)['media_id_string'])
 
-    media_id= ','.join(media_id)  #④
+    media_id= ','.join(media_id) 
 
-    status = "test"
+    status = text
 
     params = {"status": status, "media_ids": media_id}
-
-    stri = "アイウエオ"
-
-    print(stri+"ペロペロ")
 
     twitter.post(url_text,params=params)
 
