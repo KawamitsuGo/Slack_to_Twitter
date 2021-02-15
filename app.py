@@ -42,6 +42,11 @@ def update_emoji(payload):
     user = user_info.get("user")
     user_name = user.get("real_name")
 
+
+    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+    print(payload)
+    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+
     print(user_name)
 
     if "青木允輝"in user_name and reaction == 'white_check_mark' and ts not in ts_list :
@@ -83,7 +88,7 @@ def update_emoji(payload):
 
         ts_list.append(ts)
         
-
+        print(response)
 
         try:
             if file_check == True: 
@@ -92,9 +97,70 @@ def update_emoji(payload):
                 tweet(text)
             text='正常にツイートしました'
             slack_web_client.chat_postMessage(token=os.environ['ACCESS_TOKEN'],channel=channel_id,text=text,thread_ts=ts,username="TWEET_SUBMIT")
+            print(response)
         except:
             text='ツイートに失敗しました'
             slack_web_client.chat_postMessage(token=os.environ['ACCESS_TOKEN'],channel=channel_id,text=text,thread_ts=ts,username="TWEET_SUBMIT")
+
+    if "青木允輝"in user_name and reaction == 'white_check_mark' and False and ts not in ts_list :
+        response = slack_web_client.reactions_get(**{'channel':channel_id , 'timestamp': ts})
+        message = response.get("message")
+        text = message.get("text")
+        files = message.get("files")
+        if files != None:
+            file_check = True
+        else:
+            file_check = False
+        urls = []
+
+        print("\n\n\n\n\n\n\n\n")
+        print(files)
+        print("\n\n\n\n\n\n\n\n")
+
+        if file_check == True:
+            for photo in files:
+                photo_id = photo.get('id')
+                print(photo_id)
+                try:
+                    slack_web_client.files_sharedPublicURL(token=os.environ['ACCESS_TOKEN'],file = photo_id)
+                except:
+                    pass
+                url_private = photo.get('url_private')
+                url = photo.get('permalink_public')
+                permanents = url.split('-')
+                permanent = permanents[-1]
+                url = url_private + '?pub_secret=' + permanent
+                urls.append(url)
+
+                text = url
+
+            i = 0
+            for url in urls:
+                dst_path = 'py-logo'+ str(i) + '.png'
+                download_file(url, dst_path)
+                i = i + 1
+        
+            ts_list.append(ts)
+            
+            try:
+                if file_check == True: 
+                    tweet_img(urls,text)
+                    print("ぺろ")
+                else:
+                    tweet(text)
+                text='正常にツイートしました'
+                slack_web_client.chat_postMessage(token=os.environ['ACCESS_TOKEN'],channel=channel_id,text=url,thread_ts=ts,username="TWEET_SUBMIT")
+                print(response)
+            except:
+                text='ツイートに失敗しました'
+                slack_web_client.chat_postMessage(token=os.environ['ACCESS_TOKEN'],channel=channel_id,text=text,thread_ts=ts,username="TWEET_SUBMIT")
+                print(urls)
+        else:
+            text='投稿には画像が必要です。'
+            slack_web_client.chat_postMessage(token=os.environ['ACCESS_TOKEN'],channel=channel_id,text=text,thread_ts=ts,username="TWEET_SUBMIT")
+
+
+
 
 
 def tweet(text):    
@@ -113,6 +179,8 @@ def tweet(text):
     params = {"status": status}
 
     twitter.post(url_text,params=params)
+
+
 
 def tweet_img(img_url,text):    
 
